@@ -5,12 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Batalha {
-    
-
-    
-
-
-
+   
     public static void main(String[] args){
         int dimensao = 4;
         ArrayList<String> campo = new ArrayList();
