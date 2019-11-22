@@ -5,23 +5,57 @@
  */
 package entidade;
 
+import java.util.Random;
+
 /**
  *
- * @author gabriel
+ * @author gabriel, matheus
  */
-public class Armas extends ItemBase{
+public class Armas {
     private String nome;
-    private int distanciaEfetiva;
+    private Double coeficienteDeDano;
+    private Double dano;
     
-    public Armas(String tipo, int dano, String nome, int distanciaEfetiva) {
-        super(tipo, dano);
+    Random random = new Random();
+
+    public Armas() {
+    }
+
+    public Armas(String nome, Double coeficienteDeDano, Double distancia3d) {
         this.nome = nome;
-        this.distanciaEfetiva = distanciaEfetiva;
+        this.coeficienteDeDano = coeficienteDeDano;
+        this.dano = (coeficienteDeDano/distancia3d)*random.nextDouble();
     }
-    public String getNome(){
-        return this.nome;
+
+    public String getNome() {
+        return nome;
     }
-    public int getDistanciaEfetiva(){
-        return this.distanciaEfetiva;
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getCoeficienteDeDano() {
+        return coeficienteDeDano;
+    }
+
+    public void setCoeficienteDeDano(Double coeficienteDeDano) {
+        this.coeficienteDeDano = coeficienteDeDano;
+    }
+
+    public Double getDano() {
+        return dano;
+    }
+
+    public void setDano(Double dano) {
+        this.dano = dano;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
     }
 }
