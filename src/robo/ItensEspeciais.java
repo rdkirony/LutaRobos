@@ -11,4 +11,7 @@ package robo;
  */
 public class ItensEspeciais {
     
+    public ItensEspeciais(){
+        
+    }
 }
