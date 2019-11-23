@@ -5,23 +5,37 @@
  */
 package entidade;
 
+import java.util.Random;
+
 /**
  *
- * @author gabriel
+ * @author gabriel, matheus
  */
-public class Armas extends ItemBase{
+public class Armas extends ItemBase {
     private String nome;
-    private int distanciaEfetiva;
-    
-    public Armas(String tipo, int dano, String nome, int distanciaEfetiva) {
-        super(tipo, dano);
+    private Double disntaciaEfetiva;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
         this.nome = nome;
-        this.distanciaEfetiva = distanciaEfetiva;
     }
-    public String getNome(){
-        return this.nome;
+
+    public Double getDisntaciaEfetiva() {
+        return disntaciaEfetiva;
     }
-    public int getDistanciaEfetiva(){
-        return this.distanciaEfetiva;
+
+    public void setDisntaciaEfetiva(Double disntaciaEfetiva) {
+        this.disntaciaEfetiva = disntaciaEfetiva;
     }
+
+    public Armas(String nome, Double disntaciaEfetiva, Double dano, String tipo) {
+        super(dano, tipo);
+        this.nome = nome;
+        this.disntaciaEfetiva = disntaciaEfetiva;
+    }
+   
+  
 }
