@@ -11,21 +11,9 @@ import java.util.Random;
  *
  * @author gabriel, matheus
  */
-public class Armas {
+public class Armas extends ItemBase {
     private String nome;
-    private Double coeficienteDeDano;
-    private Double dano;
-    
-    Random random = new Random();
-
-    public Armas() {
-    }
-
-    public Armas(String nome, Double coeficienteDeDano, Double distancia3d) {
-        this.nome = nome;
-        this.coeficienteDeDano = coeficienteDeDano;
-        this.dano = (coeficienteDeDano/distancia3d)*random.nextDouble();
-    }
+    private Double disntaciaEfetiva;
 
     public String getNome() {
         return nome;
@@ -35,27 +23,19 @@ public class Armas {
         this.nome = nome;
     }
 
-    public Double getCoeficienteDeDano() {
-        return coeficienteDeDano;
+    public Double getDisntaciaEfetiva() {
+        return disntaciaEfetiva;
     }
 
-    public void setCoeficienteDeDano(Double coeficienteDeDano) {
-        this.coeficienteDeDano = coeficienteDeDano;
+    public void setDisntaciaEfetiva(Double disntaciaEfetiva) {
+        this.disntaciaEfetiva = disntaciaEfetiva;
     }
 
-    public Double getDano() {
-        return dano;
+    public Armas(String nome, Double disntaciaEfetiva, Double dano, String tipo) {
+        super(dano, tipo);
+        this.nome = nome;
+        this.disntaciaEfetiva = disntaciaEfetiva;
     }
-
-    public void setDano(Double dano) {
-        this.dano = dano;
-    }
-
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
-    }
+   
+  
 }

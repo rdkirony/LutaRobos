@@ -7,7 +7,7 @@ import java.util.Iterator;
 public class Batalha {
    
     public static void main(String[] args){
-        int dimensao = 4;
+        int dimensao = 7;
         ArrayList<String> campo = new ArrayList();
         Arena arena = new Arena(dimensao,dimensao,dimensao);
         int camp[][][];

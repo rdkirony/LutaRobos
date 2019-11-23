@@ -6,7 +6,9 @@
 package view;
 import arena.Arena;
 import batalha.Batalha;
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -18,7 +20,19 @@ public class Campo extends javax.swing.JFrame {
      * Creates new form Arena
      */
     public Campo() {
+   
         initComponents();
+        int test = 3;
+        int dimensao = 4;
+        String teste = "OOOOOOOOOOOOOOOOOI";
+        ArrayList<String> campo = new ArrayList();
+        Arena arena = new Arena(dimensao,dimensao,dimensao);
+        int camp[][][];
+        camp = arena.ExcessaoLimiteArena(arena,dimensao);
+;
+        this.TextCampo.setText(camp.toString());
+
+        
     }
 
     /**
@@ -30,61 +44,54 @@ public class Campo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TextCampo = new javax.swing.JTextField();
-        ButtonGerar = new javax.swing.JButton();
+        ButtonJogar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextCampo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TextCampo.addActionListener(new java.awt.event.ActionListener() {
+        ButtonJogar.setText("Jogar");
+        ButtonJogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextCampoActionPerformed(evt);
+                ButtonJogarActionPerformed(evt);
             }
         });
 
-        ButtonGerar.setText("Gerar");
-        ButtonGerar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonGerarActionPerformed(evt);
-            }
-        });
+        TextCampo.setColumns(20);
+        TextCampo.setRows(5);
+        jScrollPane1.setViewportView(TextCampo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TextCampo)
             .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(ButtonGerar)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGap(175, 175, 175)
+                .addComponent(ButtonJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(196, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(TextCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                .addComponent(ButtonGerar)
-                .addGap(35, 35, 35))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ButtonJogar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGerarActionPerformed
-        int dimensao = 4;
+    private void ButtonJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonJogarActionPerformed
 
-        ArrayList<String> campo = new ArrayList();
-        Arena arena = new Arena(dimensao,dimensao,dimensao);
-        int camp[][][];
-        camp = arena.ExcessaoLimiteArena(arena,dimensao);
-        campo = arena.convertArena(camp,dimensao);
-        campo.add(this.TextCampo.getText());
         
-    }//GEN-LAST:event_ButtonGerarActionPerformed
-
-    private void TextCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextCampoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextCampoActionPerformed
+        
+    }//GEN-LAST:event_ButtonJogarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,7 +130,8 @@ public class Campo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonGerar;
-    private javax.swing.JTextField TextCampo;
+    private javax.swing.JButton ButtonJogar;
+    private javax.swing.JTextArea TextCampo;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

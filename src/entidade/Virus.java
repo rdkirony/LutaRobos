@@ -1,8 +1,9 @@
 package entidade;
 
-public class Virus {
+public class Virus extends ItemBase {
     private int numeroRodadas;
-    public Virus(String tipo, int dano, int numeroRodadas) {
+    public Virus( double dano, String tipo, int numeroRodadas) {
+        super(dano,tipo);
         this.numeroRodadas = numeroRodadas;
     }
 

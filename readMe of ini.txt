@@ -16,7 +16,6 @@ m*{
 	nome
 	classe
 	vida %
-	dano %
 	precisão %
 	movimento 
 	armadura %

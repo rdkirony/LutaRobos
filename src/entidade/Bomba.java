@@ -1,9 +1,10 @@
 package entidade;
 
-public class Bomba {
+public class Bomba extends ItemBase{
     private int areaExplosao;
     
-    public Bomba(String tipo, int dano, int areaExplosao) {
+    public Bomba(String tipo, double dano, int areaExplosao) {
+        super(dano,tipo);
         this.areaExplosao = areaExplosao;
     }
     
