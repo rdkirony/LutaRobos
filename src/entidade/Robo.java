@@ -4,19 +4,18 @@ public class Robo {
     private String nome;
     private String classe;
     private int vida;
-    private int precisao;
+    private double precisao;
     private int movimento;
-    private int armadura;
+    private double armadura;
     private Armas arma;
 
-    public Robo(String nome, String classe, int vida, int precisao, int movimento, int armadura, Armas arma){
+    public Robo(String nome, String classe, int vida, double precisao, int movimento, double armadura){
         this.nome = nome;
         this.classe = classe;
         this.vida = vida;
         this.precisao = precisao;
         this.movimento = movimento;
         this.armadura = armadura;
-        this.arma = arma;
     }
     
     public String getNome(){
@@ -29,13 +28,13 @@ public class Robo {
         return this.vida;
     }
 
-    public int getPrecisao(){
+    public double getPrecisao(){
         return this.precisao;
     }
     public int getMovimento(){
         return this.movimento;
     }
-    public int getArmadura(){
+    public double getArmadura(){
         return this.armadura;
     }
     public Armas getArma(){

@@ -5,15 +5,13 @@
  */
 package entidade;
 
-import java.util.Random;
-
 /**
  *
  * @author gabriel, matheus
  */
-public class Armas extends ItemBase {
+public class Armas extends ItensEspeciais {
     private String nome;
-    private Double disntaciaEfetiva;
+    private int disntaciaEfetiva;
 
     public String getNome() {
         return nome;
@@ -23,15 +21,15 @@ public class Armas extends ItemBase {
         this.nome = nome;
     }
 
-    public Double getDisntaciaEfetiva() {
+    public int getDisntaciaEfetiva() {
         return disntaciaEfetiva;
     }
 
-    public void setDisntaciaEfetiva(Double disntaciaEfetiva) {
+    public void setDisntaciaEfetiva(int disntaciaEfetiva) {
         this.disntaciaEfetiva = disntaciaEfetiva;
     }
 
-    public Armas(String nome, Double disntaciaEfetiva, Double dano, String tipo) {
+    public Armas(String tipo, String nome, int dano, int disntaciaEfetiva) {
         super(dano, tipo);
         this.nome = nome;
         this.disntaciaEfetiva = disntaciaEfetiva;
