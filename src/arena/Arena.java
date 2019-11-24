@@ -46,15 +46,17 @@ public class Arena {
         return campo;
         
     }
-    public static int[][][] ExcessaoLimiteArena(Arena arena,int dimensao){
+     public static int[][][] ExcessaoLimiteArena(Arena arena,int dimensao){
        int campo[][][] =Arena.gerarArena(arena);
        for(int i=0;i<dimensao;i++){
            for(int j=0;j<dimensao;j++){
                for(int z=0;z<dimensao;z++){
                    campo[i][j][z] = 0;
-                   if(i==0 || (z==0 && j==0)||(z==dimensao-1 && j==dimensao-1)||i == dimensao-1){
+                   if(i==0 || i == dimensao-1){
                       campo[i][j][z] = 1;  
                    }
+                   if((z==0 && j==0)||(z==dimensao-1 && j==dimensao-1))
+                       campo[i][j][z] = 2;
                 }  
             }
         }
@@ -65,7 +67,14 @@ public class Arena {
     for(int i=0;i<dimensao;i++){
         for(int j=0;j<dimensao;j++){
             for(int z=0;z<dimensao;z++){
-                campo.add (Integer.toString(camp[i][j][z]));
+                if(camp[i][j][z] == 1){
+                    campo.add("-");
+                }
+                if(camp[i][j][z] == 2){
+                    campo.add("|");
+                }
+                if(camp[i][j][z] == 0)
+                    campo.add(" ");
             }             
         }
         campo.add ("\n");
@@ -73,6 +82,7 @@ public class Arena {
         }
     return campo;
    }
+   
    
 
 

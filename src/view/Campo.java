@@ -23,15 +23,19 @@ public class Campo extends javax.swing.JFrame {
    
         initComponents();
         int test = 3;
-        int dimensao = 4;
-        String teste = "OOOOOOOOOOOOOOOOOI";
+        int dimensao = 14;
         ArrayList<String> campo = new ArrayList();
         Arena arena = new Arena(dimensao,dimensao,dimensao);
         int camp[][][];
         camp = arena.ExcessaoLimiteArena(arena,dimensao);
-;
-        this.TextCampo.setText(camp.toString());
-
+        campo = arena.convertArena(camp,dimensao);
+        int i=0;
+        Iterator<String> iterator = campo.iterator();
+        
+        this.TextCampo.setEditable(false);
+        while(iterator.hasNext()){
+            this.TextCampo.append(iterator.next());
+        }
         
     }
 
@@ -66,19 +70,19 @@ public class Campo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addComponent(ButtonJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(337, 337, 337)
+                .addComponent(ButtonJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonJogar)
                 .addContainerGap())
