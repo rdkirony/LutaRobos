@@ -10,11 +10,11 @@ import arena.Arena;
 public class ConfiguracaoInicial {
     
     private String file;
-    ArrayList<Robo> robos = new ArrayList();
-    ArrayList<Armas> armas = new ArrayList();
-    Bomba bomba;
-    Virus virus;
-    Arena arena;
+    private ArrayList<Robo> robos = new ArrayList();
+    private ArrayList<Armas> armas = new ArrayList();
+    private Bomba bomba;
+    private Virus virus;
+    private Arena arena;
     
     public ConfiguracaoInicial() throws Exception{
         this.file = "ini.txt";
@@ -44,5 +44,27 @@ public class ConfiguracaoInicial {
         j = j+3;
         virus = new Virus(arr.get(j),Integer.parseInt(arr.get(j+1)),Integer.parseInt(arr.get(j+2)));
     }
+
+    public ArrayList<Robo> getRobos() {
+        return robos;
+    }
+
+    public ArrayList<Armas> getArmas() {
+        return armas;
+    }
+
+    public Bomba getBomba() {
+        return bomba;
+    }
+
+    public Virus getVirus() {
+        return virus;
+    }
+
+    public Arena getArena() {
+        return arena;
+    }
+    
+    
     
 }
