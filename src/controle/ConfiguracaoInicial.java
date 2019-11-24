@@ -6,6 +6,7 @@ import entidade.Bomba;
 import entidade.Robo;
 import entidade.Virus;
 import arena.Arena;
+import entidade.Jogador;
 
 public class ConfiguracaoInicial {
     
@@ -15,10 +16,13 @@ public class ConfiguracaoInicial {
     private Bomba bomba;
     private Virus virus;
     private Arena arena;
+    private ArrayList<Jogador> jogador = new ArrayList();
     
     public ConfiguracaoInicial() throws Exception{
         this.file = "ini.txt";
         getInicialConfig();
+        jogador.add(new Jogador());
+        jogador.add(new Jogador());
     }
     
     private void getInicialConfig() throws Exception{
@@ -64,6 +68,11 @@ public class ConfiguracaoInicial {
     public Arena getArena() {
         return arena;
     }
+
+    public ArrayList<Jogador> getJogador() {
+        return jogador;
+    }
+    
     
     
     
