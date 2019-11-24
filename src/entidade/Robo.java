@@ -8,7 +8,7 @@ public class Robo {
     private int movimento;
     private int armadura;
     private Armas arma;
-
+   
     public Robo(String nome, String classe, int vida, int precisao, int movimento, int armadura, Armas arma){
         this.nome = nome;
         this.classe = classe;

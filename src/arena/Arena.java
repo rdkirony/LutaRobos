@@ -53,10 +53,22 @@ public class Arena {
                for(int z=0;z<dimensao;z++){
                    campo[i][j][z] = 0;
                    if(i==0 || i == dimensao-1){
-                      campo[i][j][z] = 1;  
+                      campo[i][j][z] = 3;  
                    }
                    if((z==0 && j==0)||(z==dimensao-1 && j==dimensao-1))
-                       campo[i][j][z] = 2;
+                       campo[i][j][z] = 4;
+                }  
+            }
+        }
+        return campo;
+   }
+      public static int[][][] Test(Arena arena,int dimensao){
+       int campo[][][] =Arena.gerarArena(arena);
+       for(int i=0;i<dimensao;i++){
+           for(int j=0;j<dimensao;j++){
+               for(int z=0;z<dimensao;z++){
+                   campo[i][j][z] = j;
+                 
                 }  
             }
         }
@@ -67,14 +79,8 @@ public class Arena {
     for(int i=0;i<dimensao;i++){
         for(int j=0;j<dimensao;j++){
             for(int z=0;z<dimensao;z++){
-                if(camp[i][j][z] == 1){
-                    campo.add("-");
-                }
-                if(camp[i][j][z] == 2){
-                    campo.add("|");
-                }
-                if(camp[i][j][z] == 0)
-                    campo.add(" ");
+                campo.add("*");
+
             }             
         }
         campo.add ("\n");

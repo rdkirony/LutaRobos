@@ -7,6 +7,7 @@ package view;
 import arena.Arena;
 import batalha.Batalha;
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,7 +24,7 @@ public class Campo extends javax.swing.JFrame {
    
         initComponents();
         int test = 3;
-        int dimensao = 14;
+        int dimensao = 4;
         ArrayList<String> campo = new ArrayList();
         Arena arena = new Arena(dimensao,dimensao,dimensao);
         int camp[][][];
@@ -31,7 +32,7 @@ public class Campo extends javax.swing.JFrame {
         campo = arena.convertArena(camp,dimensao);
         int i=0;
         Iterator<String> iterator = campo.iterator();
-        
+        this.TextCampo.setFont(new Font("Arial", Font.PLAIN,50));
         this.TextCampo.setEditable(false);
         while(iterator.hasNext()){
             this.TextCampo.append(iterator.next());
