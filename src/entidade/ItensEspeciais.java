@@ -9,20 +9,20 @@ package entidade;
  * @puta merda bixo
  * @author gabriel
  */
-public class ItemBase {
-    private Double dano;
+public class ItensEspeciais {
+    private int dano;
     private String tipo;
 
-    public ItemBase(Double dano, String tipo) {
+    public ItensEspeciais(int dano, String tipo) {
         this.dano = dano;
         this.tipo = tipo;
     }
 
-    public Double getDano() {
+    public int getDano() {
         return dano;
     }
 
-    public void setDano(Double dano) {
+    public void setDano(int dano) {
         this.dano = dano;
     }
 
