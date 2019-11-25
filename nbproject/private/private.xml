@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/batalha/Batalha.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Bomba.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/controle/GeradorPosicaoItens.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/view/Campo.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Armas.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/view/Inicio_View.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/controle/ConfiguracaoInicial.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/controle/Arquivo.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Jogador.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Robo.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/view/SelecaoArma.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/controle/IA.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/view/SelecaoRobo.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/arena/Arena.java</file>
+        </group>
+    </open-files>
 </project-private>
