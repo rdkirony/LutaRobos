@@ -49,5 +49,9 @@ public class Robo {
         this.arma = arma;
     }
     
+    @Override
+    public String toString(){
+        return "Nome: " + this.nome + "\nClasse: " + this.classe + "\nVida: " + this.vida + "\nMovimento: " + this.movimento + "\nArmadura " + this.armadura;
+    }
 
 }

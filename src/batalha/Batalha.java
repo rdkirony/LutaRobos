@@ -12,9 +12,9 @@ public class Batalha {
         Arena arena = new Arena(dimensao,dimensao,dimensao);
         int camp[][][];
 
-        camp = arena.excessaoLimiteArena(arena,dimensao);
+        camp = arena.Test(arena,dimensao);
 
-        camp = arena.excessaoLimiteArena(arena,dimensao);
+      
 
         /*campo = arena.convertArena(camp,dimensao);
         int i=0;

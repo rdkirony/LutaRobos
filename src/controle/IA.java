@@ -16,40 +16,56 @@ public class IA {
 
     }
     
-    public  void andarAleatorio(int x, int y, int z, int arena[][][],int dimensao){
+    public  void andarAleatorio(int x, int y, int z, int arena[][][],int dimensao, int numeroPlayer){
         int a;
         Random gerar = new Random();
         a = gerar.nextInt(4);
         switch (a) {
             case 0:
-                andarFrente(x,y,z,arena);
+                andarFrente(x,y,z,arena, numeroPlayer);
                 break;
             case 1:
-                andarTras(x,y,z,arena);
+                andarTras(x,y,z,arena,numeroPlayer);
                 break;
             case 2:
-                andarCima(x,y,z,arena);
+                andarCima(x,y,z,arena,numeroPlayer);
                 break;
             default:
-                andarBaixo(x,y,z,arena);
+                andarBaixo(x,y,z,arena,numeroPlayer);
                 break;
         }
         
     }
-    public void andarFrente(int xi, int yi, int zi, int arena[][][]){
-        if(zi <= 3){
-            arena[xi][yi][zi+1] = 1;
+    public void andarFrente(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
+        if(zi <= 3 || zi >=3){
+            arena[xi][yi][zi+1] = numeroPlayer;
             arena[xi][yi][zi-1] = arena[xi][yi][zi];
         }
+        else if(yi <=3 || yi >=3)
+            arena[xi][yi+1][zi] = 1;
+            arena[xi][yi-1][zi] = arena[xi][yi][zi];
     }
-    public void andarTras(int xi, int yi, int zi, int arena[][][]){
-        arena[]
+    public void andarTras(int xi, int yi, int zi, int arena[][][],int numeroPlayer){
+        if(zi <= 3 || zi >=3){
+            arena[xi][yi][zi-1] = numeroPlayer;
+            arena[xi][yi][zi+1] = arena[xi][yi][zi];
+        }
+        else if(yi <=3 || yi >=3){
+            arena[xi][yi-1][zi] = 1;
+            arena[xi][yi+1][zi] = arena[xi][yi][zi];
+        }
     }
-    public void andarCima(int xi, int yi, int zi, int arena[][][]){
-        
+    public void andarCima(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
+        if(xi <=3 || xi >=3){
+            arena[xi+1][yi][zi] = numeroPlayer;
+            arena[xi-1][yi][zi] = arena[xi][yi][zi];
+        }
     }
-    public void andarBaixo(int xi, int yi, int zi, int arena[][][]){
-        
+    public void andarBaixo(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
+        if(xi <=3 || xi >=3){
+            arena[xi-1][yi][zi] = numeroPlayer;
+            arena[xi+1][yi][zi] = arena[xi][yi][zi];
+        }
     }
         
     private float porcentagemTiro(int xa,int ya,int xi, int yi, int zi,int dimensao, int distanciaEfetiva) {

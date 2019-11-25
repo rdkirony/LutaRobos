@@ -35,5 +35,8 @@ public class Armas extends ItensEspeciais {
         this.disntaciaEfetiva = disntaciaEfetiva;
     }
    
-  
+    @Override
+    public String toString(){
+        return "Tipo: " + this.getTipo() + "\nNome: " + this.nome + "\nDano: " + this.getDano();
+    }
 }

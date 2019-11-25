@@ -10,27 +10,27 @@ import javax.swing.JOptionPane;
  *
  * @author IcTxD
  */
-public class SelecaoRobo extends javax.swing.JFrame {
+public class SelecaoArma extends javax.swing.JFrame {
     ConfiguracaoInicial dadosFileIni;
     int i;
     /**
      * Creates new form SelecaoRobo
      */
-    public SelecaoRobo(ConfiguracaoInicial dadosFileIni) {
+    public SelecaoArma(ConfiguracaoInicial dadosFileIni) {
         initComponents();
         this.dadosFileIni = dadosFileIni;
         NameLabel.setText(dadosFileIni.getJogador().get(0).getNome());
-        robosToTextArea();
+        armasToTextArea();
         rad1.setSelected(true);
         i=0;
         
     }
     
-    public void robosToTextArea(){
-        robo1Text.setText(dadosFileIni.getRobos().get(0).toString());
-        robo2Text.setText(dadosFileIni.getRobos().get(1).toString());
-        robo3Text.setText(dadosFileIni.getRobos().get(2).toString());
-        robo4Text.setText(dadosFileIni.getRobos().get(3).toString());
+    public void armasToTextArea(){
+        robo1Text.setText(dadosFileIni.getArmas().get(0).toString());
+        robo2Text.setText(dadosFileIni.getArmas().get(1).toString());
+        robo3Text.setText(dadosFileIni.getArmas().get(2).toString());
+        robo4Text.setText(dadosFileIni.getArmas().get(3).toString());
     }
 
     /**
@@ -81,7 +81,7 @@ public class SelecaoRobo extends javax.swing.JFrame {
         robo3Text.setRows(5);
         jScrollPane5.setViewportView(robo3Text);
 
-        jLabel2.setText("Seleção de robo");
+        jLabel2.setText("Seleção de Arma");
 
         jLabel3.setText("Jogador:");
 
@@ -154,11 +154,12 @@ public class SelecaoRobo extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rad1)
-                    .addComponent(rad2)
-                    .addComponent(rad3)
-                    .addComponent(rad4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rad4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rad1)
+                        .addComponent(rad2)
+                        .addComponent(rad3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -169,25 +170,24 @@ public class SelecaoRobo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(i==0){
-            if(rad1.isSelected()) dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(0));
-            else if(rad2.isSelected()) dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(1));
-            else if(rad3.isSelected()) dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(2));
-            else dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(3));
+            if(rad1.isSelected()) dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(0));
+            else if(rad2.isSelected()) dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(1));
+            else if(rad3.isSelected()) dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(2));
+            else dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(3));
             JOptionPane.showMessageDialog(this, "Selecionado");
             rad1.setSelected(true);
             rad2.setSelected(false);
             rad3.setSelected(false);
             rad4.setSelected(false);
-            NameLabel.setText(dadosFileIni.getJogador().get(1).getNome());
             i = 1;
+            NameLabel.setText(dadosFileIni.getJogador().get(1).getNome());
         }else{
-            if(rad1.isSelected()) dadosFileIni.getJogador().get(1).setRobo(dadosFileIni.getRobos().get(0));
-            else if(rad2.isSelected()) dadosFileIni.getJogador().get(1).setRobo(dadosFileIni.getRobos().get(1));
-            else if(rad3.isSelected()) dadosFileIni.getJogador().get(1).setRobo(dadosFileIni.getRobos().get(2));
-            else dadosFileIni.getJogador().get(1).setRobo(dadosFileIni.getRobos().get(3));
-            JOptionPane.showMessageDialog(this, "Selecionado");
+            if(rad1.isSelected()) dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(0));
+            else if(rad2.isSelected()) dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(1));
+            else if(rad3.isSelected()) dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(2));
+            else dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(3));
             this.setVisible(false);
-            new SelecaoArma(this.dadosFileIni).setVisible(true);
+            new Campo().setVisible(true);
         }
        
         
@@ -210,21 +210,24 @@ public class SelecaoRobo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelecaoRobo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelecaoRobo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelecaoRobo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelecaoRobo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SelecaoArma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             ConfiguracaoInicial dadosFileIni = new ConfiguracaoInicial();
             public void run() {
-                new SelecaoRobo(dadosFileIni).setVisible(true);
+                new SelecaoArma(dadosFileIni).setVisible(true);
             }
         });
     }
