@@ -1,14 +1,18 @@
 
 package arena;
 
+import controle.GeradorPosicaoItens;
 import java.util.ArrayList;
+
 
 
 public class Arena {
     private int comprimento;
     private int largura;
     private int altura;
-
+    
+    private GeradorPosicaoItens gerador = new GeradorPosicaoItens();
+    
     public int getComprimento() {
         return comprimento;
     }
@@ -46,8 +50,8 @@ public class Arena {
         return campo;
         
     }
-     public static int[][][] ExcessaoLimiteArena(Arena arena,int dimensao){
-       int campo[][][] =Arena.gerarArena(arena);
+     public static int[][][] excessaoLimiteArena(Arena arena,int dimensao){
+       int campo[][][] = Arena.gerarArena(arena);
        for(int i=0;i<dimensao;i++){
            for(int j=0;j<dimensao;j++){
                for(int z=0;z<dimensao;z++){
@@ -57,6 +61,7 @@ public class Arena {
                    }
                    if((z==0 && j==0)||(z==dimensao-1 && j==dimensao-1))
                        campo[i][j][z] = 4;
+                   GeradorPosicaoItens.GeradorItens(campo, dimensao);
                 }  
             }
         }
@@ -67,7 +72,7 @@ public class Arena {
        for(int i=0;i<dimensao;i++){
            for(int j=0;j<dimensao;j++){
                for(int z=0;z<dimensao;z++){
-                   campo[i][j][z] = j;
+                   campo[i][j][z] = z;
                  
                 }  
             }
