@@ -5,6 +5,7 @@
  */
 package view;
 import controle.ConfiguracaoInicial;
+import entidade.Robo;
 import javax.swing.JOptionPane;
 /**
  *
@@ -15,6 +16,7 @@ public class SelecaoRobo extends javax.swing.JFrame {
     int i;
     /**
      * Creates new form SelecaoRobo
+     * @param dadosFileIni
      */
     public SelecaoRobo(ConfiguracaoInicial dadosFileIni) {
         initComponents();
@@ -169,8 +171,12 @@ public class SelecaoRobo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int j =0;
         if(i==0){
-            if(rad1.isSelected()) dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(0));
+            if(rad1.isSelected()){
+            dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(0));
+            
+            }
             else if(rad2.isSelected()) dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(1));
             else if(rad3.isSelected()) dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(2));
             else dadosFileIni.getJogador().get(0).setRobo(dadosFileIni.getRobos().get(3));
@@ -193,7 +199,7 @@ public class SelecaoRobo extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+ 
     /**
      * @param args the command line arguments
      */

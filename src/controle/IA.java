@@ -11,73 +11,95 @@ public class IA {
     
 
     private int arena[][][];
-    public IA() throws Exception{
+    public IA() throws Exception{}
 
-    
-    
+    public void turnos(int arena [][][], int xa, int ya, int za,int xi, int yi, int zi,int dimensao, int distanciaEfetiva) throws Exception{
+
     }
-    public void iniciarJogo(int arena [][][], int x, int y, int z) throws Exception{
+    public void iniciarJogo(int arena [][][]) throws Exception{
         gerarP1P2(arena);
-        andarAleatorio(arena,x,y,z);
     }
     private void direcao(){
     
     }
-    private void gerarP1P2(int arena[][][]) throws Exception{
+    public void gerarP1P2(int arena[][][]) throws Exception{
         arena[2][0][0] = 1;
         arena[2][3][3] = 2;
         
     }
     
-    private  void andarAleatorio(int arena[][][],int x, int y, int z) throws Exception{
-        int a;
-        int numeroPlayer;
-        numeroPlayer = arena[x][y][z]; 
-        Random gerar = new Random();
-        a = gerar.nextInt(4);
-        if(a == 0)
-            andarFrente(x,y,z,arena, numeroPlayer);
-        else if(a == 1)  
-            andarTras(x,y,z,arena,numeroPlayer);
-        else if(a == 2)  
-            andarCima(x,y,z,arena,numeroPlayer);
-        else
-            andarBaixo(x,y,z,arena,numeroPlayer);
+    public  void andarAleatorio(int arena[][][],int x, int y, int z, int dimensao) throws Exception{
+       int a;
+       Random gerar = new Random();
+       a = gerar.nextInt(4) ;
+       if(a == 0)
+           andarFrente(arena,x,y,z,dimensao);
+       else if(a == 1)
+           andarTras(arena,x,y,z,dimensao);
+       else if(a == 2)
+           andarCima(arena,x,y,z,dimensao); 
+       else if(a == 3)
+           andarBaixo(arena,x,y,z,dimensao); 
+       
+       }
 
-
-        }
         
+
+    private void andarFrente(int arena[][][], int x, int y, int z, int dimensao) throws Exception{
+        if((z >=0 || z <3)){
+                arena[x][y][z+1] = arena[x][y][z];
+            if(x==0 || x == dimensao-1){
+                arena[x][y][z] = 3;  
+            }
+            else if((z==0 && y==0)||(z==dimensao-1 && y==dimensao-1))
+                arena[x][y][z] = 4;
+            else 
+                arena[x][y][z] = 0;
+        }  
+
+    }
     
-    private void andarFrente(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
-        if(zi <= 3 || zi >=3){
-            arena[xi][yi][zi+1] = numeroPlayer;
-            arena[xi][yi][zi-1] = arena[xi][yi][zi];
+
+    private void andarTras(int arena[][][],int x, int y, int z, int dimensao){
+        if((z >0 || z <3) && ((arena[x+1][y][z] != 4 
+                && arena[x-1][y][z] !=4 )|| (arena[x-1][y][z] !=4 && arena[x][y][z+1] !=4) || (arena[x+1][y][z] !=4 && arena[x][y][z+1] !=4)
+                || (z>0 && ((arena[x][y][z-1] !=3 && arena[x-1][y][z] !=4) || (arena[x][y][z-1] !=4 && arena[x+1][y][z] !=4))))){
+            arena[x][y][z-1] = arena[x][y][z];
+            if(x==0 || x == dimensao-1){
+                arena[x][y][z] = 3;  
+            }
+            else if((z==0 && y==0)||(z==dimensao-1 && y==dimensao-1))
+                arena[x][y][z] = 4;
+            else 
+                arena[x][y][z] = 0;
         }
-        else if(yi <=3 || yi >=3)
-            arena[xi][yi+1][zi] = 1;
-            arena[xi][yi-1][zi] = arena[xi][yi][zi];
+
+
     }
-    private void andarTras(int xi, int yi, int zi, int arena[][][],int numeroPlayer){
-        if(zi <= 3 || zi >=3){
-            arena[xi][yi][zi-1] = numeroPlayer;
-            arena[xi][yi][zi+1] = arena[xi][yi][zi];
-        }
-        else if(yi <=3 || yi >=3){
-            arena[xi][yi-1][zi] = 1;
-            arena[xi][yi+1][zi] = arena[xi][yi][zi];
-        }
+    public void andarCima(int arena[][][],int x, int y, int z,  int dimensao){
+        if((x >=0 || x <3)){
+            arena[x-1][y][z] = arena[x][y][z];
+            if(x==0 || x == dimensao-1){
+                arena[x][y][z] = 3;  
+            }
+            else if((z==0 && y==0)||(z==dimensao-1 && y==dimensao-1))
+                arena[x][y][z] = 4;
+            else 
+                arena[x][y][z] = 0;
+        }  
+
     }
-    public void andarCima(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
-        if(xi <=3 || xi >=3){
-            arena[xi+1][yi][zi] = numeroPlayer;
-            arena[xi-1][yi][zi] = arena[xi][yi][zi];
-        }
-    }
-    public void andarBaixo(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
-        if(xi <=3 || xi >=3){
-            arena[xi-1][yi][zi] = numeroPlayer;
-            arena[xi+1][yi][zi] = arena[xi][yi][zi];
-        }
+    public void andarBaixo(int arena[][][], int x, int y, int z, int dimensao){
+        if((x >=0 || x <3)){
+            arena[x+1][y][z] = arena[x][y][z];
+            if(x==0 || x == dimensao-1){
+                arena[x][y][z] = 3;  
+            }
+            else if((z==0 && y==0)||(z==dimensao-1 && y==dimensao-1))
+                arena[x][y][z] = 4;
+            else 
+                arena[x][y][z] = 0;
+        } 
     }
         
     private float porcentagemTiro(int xa,int ya,int xi, int yi, int zi,int dimensao, int distanciaEfetiva) {
@@ -124,4 +146,6 @@ public class IA {
         }
         return false;
     }
+
+ 
 }

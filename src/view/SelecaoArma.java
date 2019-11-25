@@ -7,6 +7,8 @@ package view;
 import controle.ConfiguracaoInicial;
 import javax.swing.JOptionPane;
 import controle.IA;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author IcTxD
@@ -15,8 +17,11 @@ public class SelecaoArma extends javax.swing.JFrame {
     ConfiguracaoInicial dadosFileIni;
     IA jogo;
     int i;
+
+    private int j;
     /**
      * Creates new form SelecaoRobo
+     * @param dadosFileIni
      */
     public SelecaoArma(ConfiguracaoInicial dadosFileIni) {
         initComponents();
@@ -27,14 +32,13 @@ public class SelecaoArma extends javax.swing.JFrame {
         i=0;
         
     }
-    
+
     public void armasToTextArea(){
         robo1Text.setText(dadosFileIni.getArmas().get(0).toString());
         robo2Text.setText(dadosFileIni.getArmas().get(1).toString());
         robo3Text.setText(dadosFileIni.getArmas().get(2).toString());
         robo4Text.setText(dadosFileIni.getArmas().get(3).toString());
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,10 +176,21 @@ public class SelecaoArma extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(i==0){
-            if(rad1.isSelected()) dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(0));
-            else if(rad2.isSelected()) dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(1));
-            else if(rad3.isSelected()) dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(2));
-            else dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(3));
+            if(rad1.isSelected()){ 
+                dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(0));
+  
+            }
+            else if(rad2.isSelected()) {
+                dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(1));
+
+            }
+            else if(rad3.isSelected()){ 
+                dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(2));
+
+            }
+            else{ 
+                dadosFileIni.getJogador().get(0).getRobo().setArma(dadosFileIni.getArmas().get(3));
+            }
             JOptionPane.showMessageDialog(this, "Selecionado");
             rad1.setSelected(true);
             rad2.setSelected(false);
@@ -184,12 +199,30 @@ public class SelecaoArma extends javax.swing.JFrame {
             i = 1;
             NameLabel.setText(dadosFileIni.getJogador().get(1).getNome());
         }else{
-            if(rad1.isSelected()) dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(0));
-            else if(rad2.isSelected()) dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(1));
-            else if(rad3.isSelected()) dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(2));
-            else dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(3));
+            if(rad1.isSelected()){
+                dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(0));
+
+            }
+            else if(rad2.isSelected()){
+                dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(1));
+
+
+            }
+            else if(rad3.isSelected()){
+                dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(2));
+
+            }
+            else{ 
+                dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(3));
+
+            }
             this.setVisible(false);
-            new Campo(dadosFileIni, jogo).setVisible(true);
+            try {
+                IA jogo = new IA();
+                new Campo(dadosFileIni, jogo).setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(SelecaoArma.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        
         
@@ -224,9 +257,10 @@ public class SelecaoArma extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
+           
             ConfiguracaoInicial dadosFileIni = new ConfiguracaoInicial();
             public void run() {
                 new SelecaoArma(dadosFileIni).setVisible(true);
@@ -254,4 +288,6 @@ public class SelecaoArma extends javax.swing.JFrame {
     private javax.swing.JTextArea robo3Text;
     private javax.swing.JTextArea robo4Text;
     // End of variables declaration//GEN-END:variables
+
+ 
 }

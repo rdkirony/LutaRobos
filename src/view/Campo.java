@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 package view;
+import entidade.Robo;
 import arena.Arena;
-import batalha.Batalha;
 import controle.ConfiguracaoInicial;
-import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import controle.IA;
+
 /**
  *
  * @author gabriel
@@ -21,34 +21,53 @@ import controle.IA;
 public class Campo extends javax.swing.JFrame {
     ConfiguracaoInicial arena;
     IA jogo;
+    Robo robo1,robo2;
+    SelecaoArma arma;
     /**
      * Creates new form Arena
      * @param arena
      * @param jogo
+     * @return 
      */
-    public Campo(ConfiguracaoInicial arena, IA jogo) {
+    public int arma(int j){
+        return j;
+    }
+
+    public Campo(ConfiguracaoInicial arena, IA jogo) throws Exception {
         
         initComponents();
         int dimensao = 4;
         ArrayList<String> campo = new ArrayList();
-
+        Nome1.setText(arena.getJogador().get(0).getNome());
+        Nome2.setText(arena.getJogador().get(1).getNome());
+        
         int camp[][][];
-        camp = Arena.excessaoLimiteArena(arena.getArena(),dimensao);
-        try {
-            jogo.iniciarJogo(camp,arena.getArena().getAltura(),arena.getArena().getComprimento(),arena.getArena().getLargura());
-        } catch (Exception ex) {
-            Logger.getLogger(Campo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        campo =  Arena.convertArena(camp,dimensao);
-        int i=0;
-        Iterator<String> iterator = campo.iterator();
-        this.TextCampo.setFont(new Font("Arial", Font.PLAIN,70));
-        this.TextCampo.setEditable(false);
-        while(iterator.hasNext()){
+        camp = Arena.excessaoLimiteArena(arena.getArena(),arena.getArena().getAltura());
+        robo1 = new Robo(2,0,0);
+        robo2 = new Robo(2,3,3);
+        jogo.iniciarJogo(camp);
+        jogo.turnos(camp, robo1.getX(),robo1.geY(), robo1.getZ(), robo2.getX(), robo2.getX()  , robo2.getZ(),dimensao, 1);
+        for(int i=0;i<10;i++){
+            campo = Arena.convertArena(camp, dimensao);
+            Iterator<String> iterator = campo.iterator();
+            this.TextCampo.setFont(new Font("Arial", Font.PLAIN,70));
+            this.TextCampo.setEditable(false);
+            this.TextCampo.setLineWrap(true);
+            while(iterator.hasNext()){
             this.TextCampo.append(iterator.next());
+           
+            }
+            jogo.andarAleatorio(camp,robo1.getX(),robo1.geY(),robo1.getZ(),dimensao);
+   
+         
+        
+             
+            
         }
         
+       
+
+
     }
 
     /**
@@ -63,6 +82,8 @@ public class Campo extends javax.swing.JFrame {
         ButtonJogar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextCampo = new javax.swing.JTextArea();
+        Nome1 = new javax.swing.JLabel();
+        Nome2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,25 +98,41 @@ public class Campo extends javax.swing.JFrame {
         TextCampo.setRows(5);
         jScrollPane1.setViewportView(TextCampo);
 
+        Nome1.setText("P1");
+
+        Nome2.setText("P2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(337, 337, 337)
-                .addComponent(ButtonJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(337, 337, 337)
+                        .addComponent(ButtonJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 323, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(Nome1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Nome2)
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Nome1)
+                    .addComponent(Nome2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonJogar)
                 .addContainerGap())
         );
@@ -148,7 +185,11 @@ public class Campo extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     Logger.getLogger(Campo.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                new Campo(dadosFileIni,jogo).setVisible(true);
+                try {
+                    new Campo(dadosFileIni,jogo).setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(Campo.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             }
         });
@@ -156,6 +197,8 @@ public class Campo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonJogar;
+    private javax.swing.JLabel Nome1;
+    private javax.swing.JLabel Nome2;
     private javax.swing.JTextArea TextCampo;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/batalha/Batalha.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Bomba.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/controle/GeradorPosicaoItens.java</file>
@@ -14,26 +13,11 @@
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/controle/Arquivo.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Jogador.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Robo.java</file>
+            <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/entidade/Virus.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/view/SelecaoArma.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/controle/IA.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/view/SelecaoRobo.java</file>
             <file>file:/home/gabriel/NetBeansProjects/LutaRobos/src/arena/Arena.java</file>
-=======
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/batalha/Batalha.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/entidade/Virus.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/entidade/Jogador.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/controle/ConfiguracaoInicial.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/entidade/Robo.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/view/SelecaoRobo.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/controle/IA.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/view/SelecaoArma.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/view/Campo.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/arena/Arena.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/entidade/Armas.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/controle/GeradorPosicaoItens.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/entidade/Bomba.java</file>
-            <file>file:/home/funcionaporra/Documentos/GitHub/LutaRobos/src/view/Inicio_View.java</file>
->>>>>>> 7f17b010ff593c89b76016439599d86e5cc31787
         </group>
     </open-files>
 </project-private>

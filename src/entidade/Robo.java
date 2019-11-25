@@ -9,7 +9,7 @@ public class Robo {
     private double armadura;
     private Armas arma;
     private int numeroRobo;
-   
+    private int x,y,z;
    
 
     public Robo(String nome, String classe, int vida, double precisao, int movimento, double armadura){
@@ -21,7 +21,11 @@ public class Robo {
         this.movimento = movimento;
         this.armadura = armadura;
     }
-    
+    public Robo(int x, int y, int z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
     public String getNome(){
         return this.nome;
     }
@@ -47,6 +51,15 @@ public class Robo {
     
     public void setArma(Armas arma) {
         this.arma = arma;
+    }
+    public int getX(){
+        return this.x;
+    }
+    public int geY(){
+        return this.y;
+    }
+    public int getZ(){
+        return this.z;
     }
     
     @Override
