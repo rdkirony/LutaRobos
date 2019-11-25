@@ -6,33 +6,44 @@
 package view;
 import arena.Arena;
 import batalha.Batalha;
+import controle.ConfiguracaoInicial;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import controle.IA;
 /**
  *
  * @author gabriel
  */
 public class Campo extends javax.swing.JFrame {
-
+    ConfiguracaoInicial arena;
+    IA jogo;
     /**
      * Creates new form Arena
+     * @param arena
+     * @param jogo
      */
-    public Campo() {
-   
+    public Campo(ConfiguracaoInicial arena, IA jogo) {
+        
         initComponents();
-        int test = 3;
         int dimensao = 4;
         ArrayList<String> campo = new ArrayList();
-        Arena arena = new Arena(dimensao,dimensao,dimensao);
+
         int camp[][][];
-        camp = arena.excessaoLimiteArena(arena,dimensao);
-        campo = arena.convertArena(camp,dimensao);
+        camp = Arena.excessaoLimiteArena(arena.getArena(),dimensao);
+        try {
+            jogo.iniciarJogo(camp,arena.getArena().getAltura(),arena.getArena().getComprimento(),arena.getArena().getLargura());
+        } catch (Exception ex) {
+            Logger.getLogger(Campo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        campo =  Arena.convertArena(camp,dimensao);
         int i=0;
         Iterator<String> iterator = campo.iterator();
-        this.TextCampo.setFont(new Font("Arial", Font.PLAIN,50));
+        this.TextCampo.setFont(new Font("Arial", Font.PLAIN,70));
         this.TextCampo.setEditable(false);
         while(iterator.hasNext()){
             this.TextCampo.append(iterator.next());
@@ -129,7 +140,16 @@ public class Campo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Campo().setVisible(true);
+                ConfiguracaoInicial dadosFileIni = null;
+                IA jogo = null;
+                try {
+                    dadosFileIni = new ConfiguracaoInicial();
+                    jogo = new IA();
+                } catch (Exception ex) {
+                    Logger.getLogger(Campo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                new Campo(dadosFileIni,jogo).setVisible(true);
+                
             }
         });
     }

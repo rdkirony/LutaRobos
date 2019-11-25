@@ -1,42 +1,54 @@
 
 package controle;
-import arena.Arena;
-import entidade.*;
 import java.util.Random;
+
 /**
  *
  * @author gabriel
  */
 //extends classe que vai puxar os dados gerados pelo arquivo
 public class IA {
-    public IA(){}
-    public void gerarP1P2(int arena[][][]){
+    
+
+    private int arena[][][];
+    public IA() throws Exception{
+
+    
+    
+    }
+    public void iniciarJogo(int arena [][][], int x, int y, int z) throws Exception{
+        gerarP1P2(arena);
+        andarAleatorio(arena,x,y,z);
+    }
+    private void direcao(){
+    
+    }
+    private void gerarP1P2(int arena[][][]) throws Exception{
         arena[2][0][0] = 1;
         arena[2][3][3] = 2;
-
-    }
-    
-    public  void andarAleatorio(int x, int y, int z, int arena[][][],int dimensao, int numeroPlayer){
-        int a;
-        Random gerar = new Random();
-        a = gerar.nextInt(4);
-        switch (a) {
-            case 0:
-                andarFrente(x,y,z,arena, numeroPlayer);
-                break;
-            case 1:
-                andarTras(x,y,z,arena,numeroPlayer);
-                break;
-            case 2:
-                andarCima(x,y,z,arena,numeroPlayer);
-                break;
-            default:
-                andarBaixo(x,y,z,arena,numeroPlayer);
-                break;
-        }
         
     }
-    public void andarFrente(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
+    
+    private  void andarAleatorio(int arena[][][],int x, int y, int z) throws Exception{
+        int a;
+        int numeroPlayer;
+        numeroPlayer = arena[x][y][z]; 
+        Random gerar = new Random();
+        a = gerar.nextInt(4);
+        if(a == 0)
+            andarFrente(x,y,z,arena, numeroPlayer);
+        else if(a == 1)  
+            andarTras(x,y,z,arena,numeroPlayer);
+        else if(a == 2)  
+            andarCima(x,y,z,arena,numeroPlayer);
+        else
+            andarBaixo(x,y,z,arena,numeroPlayer);
+
+
+        }
+        
+    
+    private void andarFrente(int xi, int yi, int zi, int arena[][][], int numeroPlayer){
         if(zi <= 3 || zi >=3){
             arena[xi][yi][zi+1] = numeroPlayer;
             arena[xi][yi][zi-1] = arena[xi][yi][zi];
@@ -45,7 +57,7 @@ public class IA {
             arena[xi][yi+1][zi] = 1;
             arena[xi][yi-1][zi] = arena[xi][yi][zi];
     }
-    public void andarTras(int xi, int yi, int zi, int arena[][][],int numeroPlayer){
+    private void andarTras(int xi, int yi, int zi, int arena[][][],int numeroPlayer){
         if(zi <= 3 || zi >=3){
             arena[xi][yi][zi-1] = numeroPlayer;
             arena[xi][yi][zi+1] = arena[xi][yi][zi];

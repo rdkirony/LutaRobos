@@ -6,12 +6,14 @@
 package view;
 import controle.ConfiguracaoInicial;
 import javax.swing.JOptionPane;
+import controle.IA;
 /**
  *
  * @author IcTxD
  */
 public class SelecaoArma extends javax.swing.JFrame {
     ConfiguracaoInicial dadosFileIni;
+    IA jogo;
     int i;
     /**
      * Creates new form SelecaoRobo
@@ -187,7 +189,7 @@ public class SelecaoArma extends javax.swing.JFrame {
             else if(rad3.isSelected()) dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(2));
             else dadosFileIni.getJogador().get(1).getRobo().setArma(dadosFileIni.getArmas().get(3));
             this.setVisible(false);
-            new Campo().setVisible(true);
+            new Campo(dadosFileIni, jogo).setVisible(true);
         }
        
         
