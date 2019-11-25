@@ -22,7 +22,7 @@ public class Inicio_View extends javax.swing.JFrame {
      */
     public Inicio_View() throws Exception {
         initComponents();
-        
+        dadosFileIni = new ConfiguracaoInicial();
     }
 
     /**
@@ -120,9 +120,9 @@ public class Inicio_View extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nome nao digitado");
         }else{
             dadosFileIni.getJogador().get(0).setNome(NomeJogador1.getText());
-            dadosFileIni.getJogador().get(0).setNome(NomeJogador2.getText());
+            dadosFileIni.getJogador().get(1).setNome(NomeJogador2.getText());
             this.setVisible(false);
-            new SelecaoRobo().setVisible(true);
+            new SelecaoRobo(this.dadosFileIni).setVisible(true);
         }
     }//GEN-LAST:event_JogarActionPerformed
 
