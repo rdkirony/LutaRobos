@@ -84,8 +84,7 @@ public class Arena {
     for(int i=0;i<dimensao;i++){
         for(int j=0;j<dimensao;j++){
             for(int z=0;z<dimensao;z++){
-                campo.add("*");
-
+                campo.add("█");// itens = ░   
             }             
         }
         campo.add ("\n");
