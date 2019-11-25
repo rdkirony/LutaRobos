@@ -37,10 +37,13 @@ public class IA {
         
     }
     public void andarFrente(int xi, int yi, int zi, int arena[][][]){
-        arena[xi+1][yi][zi] = 1;
+        if(zi <= 3){
+            arena[xi][yi][zi+1] = 1;
+            arena[xi][yi][zi-1] = arena[xi][yi][zi];
+        }
     }
     public void andarTras(int xi, int yi, int zi, int arena[][][]){
-        
+        arena[]
     }
     public void andarCima(int xi, int yi, int zi, int arena[][][]){
         
