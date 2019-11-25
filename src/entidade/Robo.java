@@ -8,7 +8,7 @@ public class Robo {
     private int movimento;
     private double armadura;
     private Armas arma;
-
+    private int numeroRobo;
    
    
 
