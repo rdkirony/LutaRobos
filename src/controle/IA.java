@@ -16,33 +16,36 @@ public class IA {
 
     }
     
-    public  void andarAleatorio(int x, int y, int z){
+    public  void andarAleatorio(int x, int y, int z, int arena[][][],int dimensao){
         int a;
         Random gerar = new Random();
         a = gerar.nextInt(4);
-        if(a == 0 ){
-            andarFrente(x,y,z);
+        switch (a) {
+            case 0:
+                andarFrente(x,y,z,arena);
+                break;
+            case 1:
+                andarTras(x,y,z,arena);
+                break;
+            case 2:
+                andarCima(x,y,z,arena);
+                break;
+            default:
+                andarBaixo(x,y,z,arena);
+                break;
         }
-        else if(a == 1){
-            andarTras(x,y,z);
-        }
-        else if(a == 2){
-            andarCima(x,y,z);
-        }
-        else
-            andarBaixo(x,y,z);
         
     }
-    public void andarFrente(int x, int y, int z){
+    public void andarFrente(int xi, int yi, int zi, int arena[][][]){
+        arena[xi+1][yi][zi] = 1;
+    }
+    public void andarTras(int xi, int yi, int zi, int arena[][][]){
         
     }
-    public void andarTras(int x, int y, int z){
+    public void andarCima(int xi, int yi, int zi, int arena[][][]){
         
     }
-    public void andarCima(int x, int y, int z){
-        
-    }
-    public void andarBaixo(int x, int y, int z){
+    public void andarBaixo(int xi, int yi, int zi, int arena[][][]){
         
     }
         
