@@ -72,7 +72,7 @@ public class Arena {
        for(int i=0;i<dimensao;i++){
            for(int j=0;j<dimensao;j++){
                for(int z=0;z<dimensao;z++){
-                   campo[i][j][z] = j;
+                   campo[i][j][z] = z;
                  
                 }  
             }
