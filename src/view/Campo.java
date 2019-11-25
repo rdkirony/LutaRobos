@@ -28,7 +28,7 @@ public class Campo extends javax.swing.JFrame {
         ArrayList<String> campo = new ArrayList();
         Arena arena = new Arena(dimensao,dimensao,dimensao);
         int camp[][][];
-        camp = arena.ExcessaoLimiteArena(arena,dimensao);
+        camp = arena.excessaoLimiteArena(arena,dimensao);
         campo = arena.convertArena(camp,dimensao);
         int i=0;
         Iterator<String> iterator = campo.iterator();

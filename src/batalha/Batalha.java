@@ -11,7 +11,7 @@ public class Batalha {
         ArrayList<String> campo = new ArrayList();
         Arena arena = new Arena(dimensao,dimensao,dimensao);
         int camp[][][];
-        camp = arena.Test(arena,dimensao);
+        camp = arena.excessaoLimiteArena(arena,dimensao);
         /*campo = arena.convertArena(camp,dimensao);
         int i=0;
         Iterator<String> iterator = campo.iterator();
