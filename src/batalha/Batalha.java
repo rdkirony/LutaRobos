@@ -15,8 +15,6 @@ public class Batalha {
     }
     public static void main(String[] args) throws Exception{
         ConfiguracaoInicial  conf = new ConfiguracaoInicial();
-        int altura = 5;
-        int comprimento = 15;
         
         dados(conf);
         

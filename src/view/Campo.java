@@ -75,10 +75,17 @@ public final class Campo extends javax.swing.JFrame {
     }
     
     public void mostrarMovimento(ConfiguracaoInicial arena, IA jogo) throws Exception{
-            
-     
-        jogo.andarAleatorio(camp, robo1.getX(), robo1.geY(), arena.getArena().getAltura(), arena.getArena().getComprimento());
-        robo1 = new Robo(robo1.getX(),jogo.atualizarFrente(robo1.geY()));
+        int comparativo;    
+        
+        comparativo = jogo.andarAleatorio(camp, robo1.getX(), robo1.geY(), arena.getArena().getAltura(), arena.getArena().getComprimento());
+        if(comparativo == 1)
+            robo1 = new Robo(robo1.getX(),jogo.atualizarFrente(robo1.geY()));
+        else if(comparativo == 0)
+            robo1 = new Robo(robo1.getX(),jogo.atualizarTras(robo1.geY()));
+        else if(comparativo == 2)
+            robo1 = new Robo(jogo.atualizarCima(robo1.getX()),robo1.geY());
+        else if(comparativo == 3)
+            robo1 = new Robo(jogo.atualizarBaixo(robo1.getX()),robo1.geY());
         campo = Arena.convertArena(camp,arena.getArena().getAltura(),arena.getArena().getComprimento());
         Iterator<String> iterator = campo.iterator();
         //Thread.sleep(1000);

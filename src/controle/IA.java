@@ -29,14 +29,24 @@ public class IA {
         
     }
     
-    public  void andarAleatorio(int arena[][],int x, int y,int altura, int comprimento) throws Exception{
-       int a = 0;
+    public  int andarAleatorio(int arena[][],int x, int y,int altura, int comprimento) throws Exception{
+       int a;
        Random gerar = new Random();
        a = gerar.nextInt(4) ;
-       andarFrente(arena,x,y,altura,comprimento); 
-  
-  
- 
+        switch (a) {
+            case 0:
+                andarTras(arena,x,y,altura,comprimento);
+                return 0;
+            case 1:
+                andarFrente(arena,x,y,altura,comprimento);
+                return 1;
+            case 2:
+                andarCima(arena,x,y,altura,comprimento);
+                return 2;
+            default:
+                andarBaixo(arena,x,y,altura,comprimento);
+                return 3;
+        }
     }
     public int atualizarFrente(int y){
         return y+1;
@@ -69,18 +79,16 @@ public class IA {
     
     private void andarTras(int arena[][],int x, int y,int altura, int comprimento) throws InterruptedException{
 
-        if(y >=0 && y != 0){
+        if(y ==0){
+        } else {
             arena[x][y-1] = arena[x][y];
-                if(x == comprimento -1 || y == comprimento - 1 || x == 0 || y == 0)
-                    arena[x][y] = 4;
-                else 
-                    arena[x][y] = 0;
+            arena[x][y] = 0;
         }
 
 
     }
     public void andarCima(int arena[][],int x,int y,int altura, int comprimento){
-        if(y >=0 && y <=altura){
+        if(x >=0 && x <altura-1){
             arena[x-1][y] = arena[x][y];
             if(x == altura -1 || y == altura - 1 || x == 0 || y == 0)
                     arena[x][y] = 4;
@@ -91,7 +99,7 @@ public class IA {
             
     }
     public void andarBaixo(int arena[][], int x, int y,int altura, int comprimento){
-        if(y >=0 && y <=altura){
+        if(x >=0 && x <altura-1){
             arena[x+1][y] = arena[x][y];
             if(x == altura -1 || y == altura - 1 || x == 0 || y == 0)
                     arena[x][y] = 4;
