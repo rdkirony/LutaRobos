@@ -13,16 +13,23 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import controle.IA;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+import static java.lang.Thread.sleep;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author gabriel
  */
-public class Campo extends javax.swing.JFrame {
-    ConfiguracaoInicial arena;
-    IA jogo;
+public final class Campo extends javax.swing.JFrame {
+
     Robo robo1,robo2;
     SelecaoArma arma;
+    int camp[][];
+    int camp2[][];
+    ArrayList<String> campo = new ArrayList();
     /**
      * Creates new form Arena
      * @param arena
@@ -32,44 +39,60 @@ public class Campo extends javax.swing.JFrame {
     public int arma(int j){
         return j;
     }
-
-    public Campo(ConfiguracaoInicial arena, IA jogo) throws Exception {
-        
-        initComponents();
-        int dimensao = 4;
-        ArrayList<String> campo = new ArrayList();
+    public void nomes(ConfiguracaoInicial arena){
         Nome1.setText(arena.getJogador().get(0).getNome());
         Nome2.setText(arena.getJogador().get(1).getNome());
-        
-        int camp[][][];
-        camp = Arena.excessaoLimiteArena(arena.getArena(),arena.getArena().getAltura());
-        robo1 = new Robo(2,0,0);
-        robo2 = new Robo(2,3,3);
-        jogo.iniciarJogo(camp);
-        jogo.turnos(camp, robo1.getX(),robo1.geY(), robo1.getZ(), robo2.getX(), robo2.getX()  , robo2.getZ(),dimensao, 1);
-        for(int i=0;i<10;i++){
-            campo = Arena.convertArena(camp, dimensao);
-            Iterator<String> iterator = campo.iterator();
-            this.TextCampo.setFont(new Font("Arial", Font.PLAIN,70));
-            this.TextCampo.setEditable(false);
-            this.TextCampo.setLineWrap(true);
-            while(iterator.hasNext()){
-            this.TextCampo.append(iterator.next());
-           
-            }
-            jogo.andarAleatorio(camp,robo1.getX(),robo1.geY(),robo1.getZ(),dimensao);
-   
-         
-        
-             
-            
-        }
-        
-       
+    
+    }
+    public void criarRobos(ConfiguracaoInicial arena){
+        robo1 = new Robo(2,0);
+        robo2 = new Robo(2,arena.getArena().getAltura());
+    }
+    public void imprimir(Iterator iterator) throws Exception{
+       this.TextCampo.setFont(new Font("Arial", Font.PLAIN,70));
+       this.TextCampo.setEditable(false);
+       this.TextCampo.setLineWrap(true);
+       this.TextCampo.setBackground(Color.gray);
+       while(iterator.hasNext()){
+           this.TextCampo.append((String) iterator.next());    
 
-
+       }
     }
 
+    public void criarArena(ConfiguracaoInicial arena,IA jogo) throws Exception{
+        camp = Arena.excessaoLimiteArena(arena.getArena(),arena.getArena().getAltura(),arena.getArena().getComprimento());
+        jogo.iniciarJogo(camp);
+        campo = Arena.convertArena(camp,arena.getArena().getAltura(),arena.getArena().getComprimento());
+        
+    }
+    public void mostrarArena(ConfiguracaoInicial arena, IA jogo) throws Exception{
+        criarRobos(arena);
+        criarArena(arena,jogo);
+        
+        Iterator<String> iterator = campo.iterator();
+        imprimir(iterator);
+    
+    }
+    
+    public void mostrarMovimento(ConfiguracaoInicial arena, IA jogo) throws Exception{
+            
+     
+        jogo.andarAleatorio(camp, robo1.getX(), robo1.geY(), arena.getArena().getAltura(), arena.getArena().getComprimento());
+        robo1 = new Robo(robo1.getX(),jogo.atualizarFrente(robo1.geY()));
+        campo = Arena.convertArena(camp,arena.getArena().getAltura(),arena.getArena().getComprimento());
+        Iterator<String> iterator = campo.iterator();
+        //Thread.sleep(1000);
+        imprimir(iterator);
+       
+    }
+    public Campo(ConfiguracaoInicial arena, IA jogo) throws Exception {
+        initComponents();
+        nomes(arena);
+        mostrarArena(arena,jogo);
+     
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,7 +137,7 @@ public class Campo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(337, 337, 337)
                         .addComponent(ButtonJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 323, Short.MAX_VALUE)))
+                        .addGap(0, 424, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
@@ -141,15 +164,24 @@ public class Campo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonJogarActionPerformed
+        
+        try {
+            this.TextCampo.setText("");
+            ConfiguracaoInicial conf = new ConfiguracaoInicial();
+            IA ia = new IA();
+            mostrarMovimento(conf,ia);
 
-        
-        
+          
+        } catch (Exception ex) {
+            Logger.getLogger(Campo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_ButtonJogarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws InterruptedException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -173,7 +205,7 @@ public class Campo extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        Thread.sleep(1000);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

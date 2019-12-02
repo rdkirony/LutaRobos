@@ -21,11 +21,12 @@ public class Robo {
         this.movimento = movimento;
         this.armadura = armadura;
     }
-    public Robo(int x, int y, int z){
+    public Robo(int x, int y){
         this.x = x;
         this.y = y;
-        this.z = z;
     }
+
+ 
     public String getNome(){
         return this.nome;
     }

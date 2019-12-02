@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 
 
-public class Arena {
+public abstract class Arena {
     private int comprimento;
-    private int largura;
+   
     private int altura;
     
     private GeradorPosicaoItens gerador = new GeradorPosicaoItens();
@@ -21,13 +21,6 @@ public class Arena {
         this.comprimento = comprimento;
     }
 
-    public int getLargura() {
-        return largura;
-    }
-
-    public void setLargura(int largura) {
-        this.largura = largura;
-    }
 
     public int getAltura() {
         return altura;
@@ -37,62 +30,55 @@ public class Arena {
         this.altura = altura;
     }
 
-    public Arena(int comprimento, int largura, int altura) {
+    public Arena(int comprimento, int altura) {
         this.comprimento = comprimento;
-        this.largura = largura;
         this.altura = altura;
     }
-    public static int[][][] gerarArena(Arena arena){
+    public static int[][] gerarArena(Arena arena){
         int x = arena.getAltura();
         int y = arena.getComprimento();
-        int z = arena.getLargura();
-        int campo[][][] = new int[x][y][z];
+        int campo[][] = new int[x][y];
         return campo;
         
     }
-     public static int[][][] excessaoLimiteArena(Arena arena,int dimensao){
-       int campo[][][] = Arena.gerarArena(arena);
-       for(int i=0;i<dimensao;i++){
-           for(int j=0;j<dimensao;j++){
-               for(int z=0;z<dimensao;z++){
-                   campo[i][j][z] = 0;
-                   if(i==0 || i == dimensao-1){
-                      campo[i][j][z] = 3;  
-                   }
-                   if((z==0 && j==0)||(z==dimensao-1 && j==dimensao-1))
-                       campo[i][j][z] = 4;
-                   GeradorPosicaoItens.GeradorItens(campo, dimensao);
-                }  
+     public static int[][] excessaoLimiteArena(Arena arena,int altura, int comprimento){
+       int campo[][] = Arena.gerarArena(arena);
+       for(int i=0;i<altura;i++){
+           for(int j=0;j<comprimento;j++){
+              campo[i][j] = 0;
+                if(j == 0 || i == 0 || j == comprimento-1 || i == altura -1)
+                    campo[i][j] = 4;
+                   GeradorPosicaoItens.GeradorItens(campo, altura,comprimento);
+
             }
         }
         return campo;
    }
-      public static int[][][] Test(Arena arena,int dimensao){
-       int campo[][][] =Arena.gerarArena(arena);
-       for(int i=0;i<dimensao;i++){
-           for(int j=0;j<dimensao;j++){
-               for(int z=0;z<dimensao;z++){
-                   campo[i][j][z] = i;
-                 
-                }  
+    public static int[][] Test(Arena arena,int altura, int comprimento){
+       int campo[][]=Arena.gerarArena(arena);
+       for(int i=0;i<altura;i++){
+           for(int j=0;j<comprimento;j++){
+                   campo[i][j] = j;  
             }
         }
         return campo;
-   }
-   public static ArrayList<String> convertArena(int camp[][][],int dimensao){
+    }
+   public static ArrayList<String> convertArena(int camp[][],int altura, int comprimento){
     ArrayList<String> campo = new ArrayList();
-    for(int i=0;i<dimensao;i++){
-        for(int j=0;j<dimensao;j++){
-            for(int z=0;z<dimensao;z++){
-                campo.add(Integer.toString(camp[i][j][z]));
+    String area = "■";
+    for(int i=0;i<altura;i++){
+        for(int j=0;j<comprimento;j++){
+            campo.add(Integer.toString(camp[i][j]));
 
-                //campo.add("█");// itens = ░   
-
-            }             
+                //campo.add(area);
+            
+                
+                
         }
+         
+                
         campo.add ("\n");
-           
-        }
+    }
     return campo;
    }
 

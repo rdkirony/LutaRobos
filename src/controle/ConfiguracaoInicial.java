@@ -31,7 +31,7 @@ public class ConfiguracaoInicial {
         ArrayList<String> arr;
         arr = objFile.lerTudo();
         int aux,j=0;
-        arena = new Arena(Integer.parseInt(arr.get(j)),Integer.parseInt(arr.get(j+1)),Integer.parseInt(arr.get(j+2)));
+        arena = new Arena(Integer.parseInt(arr.get(j)),Integer.parseInt(arr.get(j+1))) {};
 
         aux = Integer.parseInt(arr.get(j+3));
         j=4;

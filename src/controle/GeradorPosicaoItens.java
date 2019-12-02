@@ -14,17 +14,16 @@ public class GeradorPosicaoItens {
     
     
 
-    public static void GeradorItens(int camp [][][], int dimensao) {
-        for(int i = 0; i < dimensao; i++) {
-            for(int j = 0; j < dimensao; j++) {
-                for(int w = 0; w < dimensao; w++) {
-                    camp[i][j][w] = gerarAleatorio(camp, i, j, w);
-                }
+    public static void GeradorItens(int camp [][], int altura, int comprimento) {
+        for(int i = 0; i < altura; i++) {
+            for(int j = 0; j < comprimento; j++) {
+                if(camp[i][j] != 4)
+                    camp[i][j] = gerarAleatorio(camp, i, j);
             }
         }
     }
     
-    public static int gerarAleatorio(int camp[][][], int i, int j, int w) {
+    public static int gerarAleatorio(int camp[][], int i, int j) {
         switch(random.nextInt(640)) {
             case 4://Bombas
                 return 7;//identificador da bomba
@@ -33,7 +32,7 @@ public class GeradorPosicaoItens {
             case 44://Armas
                 return 9;//identificador da Arma
             default:
-                return camp[i][j][w];
+                return camp[i][j];
         }
     }
     

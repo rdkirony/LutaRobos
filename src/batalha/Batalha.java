@@ -1,38 +1,45 @@
 
 package batalha;
 import arena.Arena;
+import controle.ConfiguracaoInicial;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Batalha {
-   
-    public static void main(String[] args){
-        int dimensao = 4;
-        ArrayList<String> campo = new ArrayList();
-        Arena arena = new Arena(dimensao,dimensao,dimensao);
-        int camp[][][];
-
-        camp = arena.Test(arena,dimensao);
-
+    static int camp[][];
+    static ArrayList<String> campo = new ArrayList();
+    public static void dados(ConfiguracaoInicial conf){
+        camp = Arena.excessaoLimiteArena(conf.getArena(),conf.getArena().getAltura(),conf.getArena().getComprimento());
+        campo = Arena.convertArena(camp, conf.getArena().getAltura(), conf.getArena().getComprimento());
+    
+    }
+    public static void main(String[] args) throws Exception{
+        ConfiguracaoInicial  conf = new ConfiguracaoInicial();
+        int altura = 5;
+        int comprimento = 15;
+        
+        dados(conf);
+        
+        
+       
+        
       
 
-        /*campo = arena.convertArena(camp,dimensao);
+       
         int i=0;
         Iterator<String> iterator = campo.iterator();
         while(iterator.hasNext()){
             System.out.printf("%s",iterator.next());
             i++;
-        }*/
-               for(int i=0;i<dimensao;i++){
-           for(int j=0;j<dimensao;j++){
-               for(int z=0;z<dimensao;z++){
-                   System.out.print(camp[i][j][z]);
-                  
-                }  
+        }
+        /*for(int i=0;i<altura;i++){
+           for(int j=0;j<comprimento;j++){
+                   System.out.print(camp[i][j]);
+
               
             }
              System.out.print("\n");
-        }
+        }*/
         
     }
 }
